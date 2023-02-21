@@ -12,7 +12,7 @@
   <body>
     <div class="scores"><a href="highscores.html">View Highscores</a></div>
 
-    <div class="timer">Time: <span id="time">0</span></div>
+    <div class="timer">Time: <span id="time">60</span></div>
 
     <div class="wrapper">
       <div id="start-screen" class="start">
@@ -22,7 +22,7 @@
           limit. Keep in mind that incorrect answers will penalize your
           score/time by ten seconds!
         </p>
-        <button id="start">Start Quiz</button>
+        <button id="start" onclick="startQuiz()">Start Quiz</button>
       </div>
 
       <div id="questions" class="hide">
@@ -35,14 +35,14 @@
         <p>Your final score is <span id="final-score"></span>.</p>
         <p>
           Enter initials: <input type="text" id="initials" max="3" />
-          <button id="submit">Submit</button>
+          <button id="submit" onclick="submit()">Submit</button>
         </p>
       </div>
 
       <div id="feedback" class="feedback hide"></div>
     </div>
 
-    <script src="./assets/js/questions.js"></script>
-    <script src="./assets/js/logic.js"></script>
+    <script src="assets/js/questions.js"></script>
+    <script src="assets/js/logic.js"></script>
   </body>
 </html>
