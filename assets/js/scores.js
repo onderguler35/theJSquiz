@@ -14,15 +14,15 @@ function displayScoreBoard() {
   // for loop below iterates through the array and creates a li element for each item in it.
   for (i = 0; i < scoreArr.length; i++) {
     li = document.createElement("li");
-    li.innerText = '   ' + scoreArr[i].initials +' : ' + scoreArr[i].score ;
+    li.innerText = scoreArr[i].initials +' : ' + scoreArr[i].score ;
     scoreBoard.append(li); // appends the created li elements to the parent <ol>.
   }
 }
 
 function clearScoreBoard() {
     confirm = confirm("Are you sure, this will delete all scores!");   //When the clear button clicked, this pops up a confirmatin window to check the user is sure to delete.
-    if (confirm) localStorage.removeItem('scoreBoard');      //if the user clicks ok then it deletes the scoreboard
-    location.reload();  // after deleting the scoreboard from storage, this refreshes the page so the new empty state shows on the page.
+    if (confirm) localStorage.removeItem('scoreBoard');      //if the user clicks ok then confirm is true and it deletes the scoreboard
+    location.reload();  // if confirmed and deleted the scoreboard from storage above, this refreshes the page so the new empty state shows on the page.
     // if user clicks cancel, which returns false, then just refreshes the page.
 }
 

@@ -76,25 +76,25 @@ function endQuiz() {
   clearInterval(counter);                                   // stop the clock ticking, time is up!
   questionsDiv.setAttribute("class", "hide");               // hides the questions screen
   resultDiv.removeAttribute("class", "hide");               // makes the result screen visible
-  if (time<0) time = 0;                                     //if score goes negative value, this resets it to make sure it will be 0 minimum
-  timeDisplay.innerHTML = time;                             // shows the end time to time display
+  if (time<0) {      //if score goes negative value, 
+    time = 0;        //this resets it to make sure it will be 0 minimum
+    timeDisplay.innerHTML = time;    // and reflects this reset to the actual time display.
+  }                                    
+                              
   finalScore.textContent = time;                            // the remaining secs are used as score as per the requirements
   submitBtn.addEventListener('click',submit);               // listening to the submit button which will take the initials and score and put to the local storage with the submit function
 }
 
-function submit() {                                         //let's create a new object with the initials entered and the score done.
-  var newScore = { 
+function submit() {       
+  var newScore = {         //let's create a new object with the initials entered and the score done.
     initials : initials.value,
     score : time
   };
-  var scoreArr = [];                                        // assings variable of the array which we will gather all the names and scores in the scoreboard in the memory. it is empty yet.
-  if (localStorage.getItem('scoreBoard') == null) {         // checking if the local storage is empty to avoid null and add first score in and then
-    scoreArr.push(newScore);                                // pushes our new object into the array of the scores no need to retrieve the data from the localstorage first as it is empty
-  }
-  else {
-    scoreArr = JSON.parse(localStorage.getItem('scoreBoard'));      // if there is already stored data in local storage, we retrieve it first to add our obj into it.
-    scoreArr.push(newScore);      
-  }
-  localStorage.setItem('scoreBoard', JSON.stringify(scoreArr));     // now our combined score array is ready to be sent back to localstorge in one peice after converting into json string as that is the only way local storage accepts data
-  window.open('./highscores.html');                         // after initials entered and submitted this takes us to highscores html page to show the list of scores everbody else scored
+  scoreArr = JSON.parse(localStorage.getItem("scoreBoard"));   // gets the scoreboard from the local storage and assign it to a variable 
+  if (scoreArr == null) scoreArr = []; // checking if the local storage is null and assigning it an empty array if it is null to avaid errors .push etc.
+  scoreArr.push(newScore);          // pushes our new object into the array of the scores                             
+  localStorage.setItem('scoreBoard', JSON.stringify(scoreArr));    // now our combined score array is ready to be sent back to localstorge in one peice after converting into json string as that is the only way local storage accepts data 
+  window.location.assign('./highscores.html'); // after initials entered and submitted this takes us to highscores html page to show the list of scores everbody else scored
 };
+
+
