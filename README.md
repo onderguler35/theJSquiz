@@ -15,13 +15,23 @@ An interactive quiz app made using Javascript and browser dom.
 * [Contribute](#Contribute)
 
 ## Description
+![App Walktrough](./assets/images/The-JS-Quiz.gif)
+
 This app will be of great use when you need to test and check the knowledge of students at school or employees at a workplace by a quiz where they race with time clicking the correct answers. They need to watch for the wrong aswers because then they will be penalised by deduction from their score time. 
 
 ## Installation
 N/A
 
 ## Usage
-N/A
+![Start Screen](./assets/images/Capture.JPG)
+
+![Questions View](./assets/images/questions.JPG)
+
+![Quiz End Screen](./assets/images/QuizEnd.JPG)
+
+![Score Board](./assets/images/scoreboard.JPG)
+
+![Confirm Delete](./assets/images/confirmDelete.JPG)
 
 ## Credits
 Thanks to bootcamp teaching team and w3schools.com for their tutorials
