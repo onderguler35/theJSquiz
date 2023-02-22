@@ -12,6 +12,7 @@ var options;
 var correctAnswer;
 var feedback = document.getElementById("feedback");
 
+
 function countDown() {
   time--;
   timeDisplay.innerHTML = time;
@@ -76,13 +77,25 @@ function endQuiz() {
   questionsDiv.setAttribute("class", "hide");
   timeDisplay.innerHTML = time;
   finalScore.textContent = time;
+  submitBtn.addEventListener('click',submit);
 }
+var submitBtn = document.getElementById('submit');
+var initials = document.getElementById('initials');
 
-function submit(time) {
-  inputInitials = document.getElementById("initials");
-  playerInitials = inputInitials.innerHTML;
+function submit() {
+  var scoreArr = [ ];
+  if (localStorage.getItem('scoreBoard') == null) {
+    var newScore = {
+      initials : initials.value,
+      score : time
+    };
+    scoreArr.push(newScore);
+    console.log('scoreArr',scoreArr)
+    scoreArr.sort();
+    console.log('scoreArr',scoreArr)
+    localStorage.setItem('scoreBoard', JSON.stringify(scoreArr));
+    console.log('new score', newScore)
+  }
+
   
 };
-localStorage.setItem('scoreMemory', JSON.stringify(score:{time}, Initials:{playerInitials}));
-console.log(inputInitials, playerInitials, obj);
-
