@@ -40,8 +40,6 @@ function countDown() {
 }
 
 function showQuestions() {
-  console.log(questionIndex)
-  if (questionIndex >= questions.length-1) endQuiz();         // if done with all questions, runs the endQuiz function
   options = questions[questionIndex].choices;               // assigns the choices part of question array for each question 
   questionTitle.innerHTML = questions[questionIndex].title; // assings each question grabing it from the title seciton of the questions array which is the question itself
   choicesDiv.textContent = "";                              // let's clear the area so it won't show previous questions options
@@ -64,11 +62,12 @@ function checkAnswer(event) {
     correct.play();                                         // plays the sound for correct answers
     feedback.textContent = "Correct!";                      // modifying the feedback to confirm correct answer
   }
-  questionIndex++;                                          // here is where we increment the questionIndex to follow the next question
   feedback.removeAttribute("class", "hide");                // makes feedback line visible  and the below setTime out clears it after 1 sec.
   setTimeout(() => {
     feedback.setAttribute("class", "hide");
   }, 1000);
+  questionIndex++;                                          // here is where we increment the questionIndex to follow the next question
+  if (questionIndex >= questions.length-1) endQuiz();         // if done with all questions, runs the endQuiz function
   showQuestions();                                          // if not done with all questions repeat the showQuestions process until all done
 }
 
