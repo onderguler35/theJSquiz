@@ -75,27 +75,28 @@ function endQuiz() {
   clearInterval(counter);
   resultDiv.removeAttribute("class", "hide");
   questionsDiv.setAttribute("class", "hide");
+  if (time<0) time = 0; //if score goes negative value, this resets it to make sure it will be 0 minimum
   timeDisplay.innerHTML = time;
   finalScore.textContent = time;
   submitBtn.addEventListener('click',submit);
 }
 var submitBtn = document.getElementById('submit');
-var initials = document.getElementById('initials');
-
+var initials = document.getElementById('initials')
 function submit() {
-  var scoreArr = [ ];
+  var newScore = {
+    initials : initials.value,
+    score : time
+  };
+  var scoreArr = [];
+  // checking if the local storage is empty to avoid null and add first score in
   if (localStorage.getItem('scoreBoard') == null) {
-    var newScore = {
-      initials : initials.value,
-      score : time
-    };
     scoreArr.push(newScore);
-    console.log('scoreArr',scoreArr)
-    scoreArr.sort();
-    console.log('scoreArr',scoreArr)
-    localStorage.setItem('scoreBoard', JSON.stringify(scoreArr));
-    console.log('new score', newScore)
+  }
+  else {
+    scoreArr = JSON.parse(localStorage.getItem('scoreBoard'));
+    scoreArr.push(newScore);    
   }
 
-  
+  localStorage.setItem('scoreBoard', JSON.stringify(scoreArr));
+  window.open('./highscores.html'); 
 };
