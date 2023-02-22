@@ -28,4 +28,10 @@ var questions = [
         choices: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
         answer: 'all of the above'
     },
+
+    {
+        title: 'A useful used during development and debugging for printing content to the debugger is:',
+        choices: ['javascript', 'terminal/bash', 'for loops', 'console.log'],
+        answer: 'console.log'
+    },
 ];
